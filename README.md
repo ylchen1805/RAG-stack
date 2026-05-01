@@ -3,15 +3,15 @@
 Using docker deploy ollama and litellm for my personal RAG.
 
 ## 1. Set up
-  1.1 Install `docker`, `nvidia container toolkit`
-  1.2 Change the `.env.example`
-    ```
-      cp .env.example .env
-    ```
+  1.1 Install `docker`, `nvidia container toolkit`  
+  1.2 Copy the `.env.example` to `.env` and change it.
+```shell
+cp .env.example .env
+```
   1.3 Start container
-    ```shell
-      docker compose up -d
-    ```
+```shell
+docker compose up -d
+```  
   1.4 Downloa Qwen
 ```shell
 docker exec -it ollama ollama pull qwen2.5:14b
