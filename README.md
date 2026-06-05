@@ -14,12 +14,12 @@ docker compose up -d
 ```  
   1.4 Downloa Qwen
 ```shell
-docker exec -it ollama ollama pull qwen2.5:14b
+docker exec -it ollama ollama pull qwen3:14b
 ```
   1.5 TEST Ollama
 ```shell
 curl http://localhost:11434/api/generate -d '{
-  "model": "qwen2.5:14b",
+  "model": "qwen3:14b",
   "prompt": "請用繁體中文介紹RAG"
 }'
 ```
@@ -29,7 +29,7 @@ curl http://localhost:4000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer sk-local-123456" \
   -d '{
-    "model": "qwen-local",
+    "model": "qwen3-local",
     "messages": [
       {"role": "user", "content": "請用繁體中文介紹RAG"}
     ]
