@@ -9,12 +9,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+    networks:
+      - llm_net
 
   ollama:
     image: ollama/ollama:latest
     container_name: ollama
-    ports:
-      - "11434:11434"
+    # Avoid expose ports to network
+    # ports:
+    #   - "11434:11434"
+    expose:
+      - "11434"
     volumes:
       - ollama_data:/root/.ollama
     deploy:
@@ -25,6 +30,8 @@ services:
               count: all
               capabilities: [gpu]
     restart: unless-stopped
+    networks:
+      - llm_net
 
   litellm:
     image: ghcr.io/berriai/litellm:main-latest
@@ -47,6 +54,11 @@ services:
       ollama:
         condition: service_started
     restart: unless-stopped
+    networks:
+      - llm_net
+
+networks:
+  llm_net:
 
 volumes:
   postgres_data:
